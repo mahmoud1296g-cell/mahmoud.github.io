@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>kelobamya</title>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Tahoma', Arial, sans-serif;
+            background: #141414;
+            color: #fff;
+        }
+
+        /* Navbar */
+        .navbar {
+            background: #000000cc;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #e50914;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: #e50914;
+        }
+
+        .search-box {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .search-box input {
+            padding: 0.5rem;
+            border-radius: 5px;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .search-box button {
+            background: #e50914;
+            border: none;
+            padding: 0.5rem 1rem;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 70vh;
+            background: linear-gradient(to bottom, #14141400, #141414), url('https://image.tmdb.org/t/p/original/8UlWHLMpgZm9bx6QYh0qoqU3iI4.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .hero-content h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin-bottom: 1.5rem;
+        }
+
+        .btn {
+            background: #e50914;
+            padding: 0.7rem 2rem;
+            border: none;
+            color: white;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        /* Movies Grid */
+        .container {
+            padding: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin: 1rem 0;
+            border-right: 5px solid #e50914;
+            padding-right: 1rem;
+        }
+
+        .movies-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .movie-card {
+            background: #1f1f1f;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s, box-shadow 0.3s;
+            cursor: pointer;
+        }
+
+        .movie-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+        }
+
+        .movie-card img {
+            width: 100%;
+            height: 270px;
+            object-fit: cover;
+        }
+
+        .movie-info {
+            padding: 0.8rem;
+        }
+
+        .movie-title {
+            font-size: 1rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .movie-date {
+            font-size: 0.8rem;
+            color: #aaa;
+        }
+
+        .rating {
+            color: gold;
+            margin-top: 0.3rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: #000;
+            margin-top: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+        }
+         input[type="button"] {
+        background-color: #333333;
+        color: #ffffff;
+        border: none;
+        padding: 10px 20px;
+        cursor: pointer;
+    }
+    :root {
+            --bg-color: #ffffff;
+            --text-color: #000000;
+            --btn-bg: #007bff;
+            --btn-text: #ffffff;
+        }
+
+        /* الوضع المظلم */
+        body.dark-mode {
+            --bg-color: #121212;
+            --text-color: #ffffff;
+            --btn-bg: #bb86fc;
+            --btn-text: #000000;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: Arial, sans-serif;
+            transition: background-color 0.3s, color 0.3s;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+           
+            
+            flex-direction: column;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        button {
+            background-color: var(--btn-bg);
+            color: var(--btn-text);
+            border: none;
+            padding: 12px 24px;
+            font-size: 18px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            margin-top: 20px;
+        }
+
+        button:hover {
+            opacity: 0.9;
+            transform: scale(1.02);
+        }
+
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="logo"><i class="fas fa-film"></i> kelobamya</div>
+        <ul class="nav-links">
+            <li><a href="#" class="active" data-category="movie">أفلام</a></li>
+            <li><a href="#" data-category="tv">مسلسلات</a></li>
+        </ul>
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="ابحث عن فيلم أو مسلسل...">
+            <button id="searchBtn"><i class="fas fa-search"></i></button>
+            <button id="theme-toggle">🌙</button>
+        
+        
+    </nav>
+
+    <div class="hero" id="hero">
+        <div class="hero-content">
+            <h1 id="heroTitle">أحدث الأفلام</h1>
+            <p id="heroDesc">اكتشف آلاف الأفلام والمسلسلات المثيرة. تجربة مشاهدة فريدة.</p>
+            <button class="btn" id="heroBtn">تصفح الآن</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 class="section-title" id="sectionTitle">أشهر الأفلام اليوم</h2>
+        <div class="movies-grid" id="moviesContainer">
+            <!-- سيتم عرض الأفلام هنا -->
+            <div style="text-align:center; padding:2rem;">جاري التحميل...</div>
+        </div>
+    </div>
+
+    <footer>
+        <p>جميع الحقوق محفوظة © 2025 - بيانات من TMDB</p>
+    </footer>
+
+    <script>
+    const toggleButton = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        // دالة لتحديث نص الزر حسب الوضع الحالي
+        function updateButtonText() {
+            if (body.classList.contains('dark-mode')) {
+                toggleButton.innerHTML = '☀️  ';
+            } else {
+                toggleButton.innerHTML = '🌙  ';
+            }
+        }
+
+        // التحقق من وجود وضع محفوظ في localStorage عند تحميل الصفحة
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+        }
+
+        // تحديث نص الزر عند التحميل
+        updateButtonText();
+
+        // إضافة حدث النقر على الزر
+        toggleButton.addEventListener('click', () => {
+            // تبديل الكلاس dark-mode
+            body.classList.toggle('dark-mode');
+
+            // حفظ الوضع المختار في localStorage
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+            } else {
+                localStorage.setItem('theme', 'light');
+            }
+
+            // تحديث نص الزر
+            updateButtonText();
+        });
+        // ضع مفتاح API الخاص بك هنا
+        const API_KEY ="75a6b8142a0bb1ecb39c0b7f14eb897a";
+        
+        let currentCategory = 'movie'; // 'movie' or 'tv'
+        
+        // عناصر DOM
+        const moviesContainer = document.getElementById('moviesContainer');
+        const sectionTitle = document.getElementById('sectionTitle');
+        const heroTitle = document.getElementById('heroTitle');
+        const heroDesc = document.getElementById('heroDesc');
+        const hero = document.getElementById('hero');
+        
+        // تغيير القسم (أفلام/مسلسلات)
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                document.querySelectorAll('.nav-links a').forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+                currentCategory = link.dataset.category;
+                
+                if(currentCategory === 'movie') {
+                    sectionTitle.innerText = 'أشهر الأفلام اليوم';
+                    heroTitle.innerText = 'أحدث الأفلام';
+                    heroDesc.innerText = 'اكتشف آلاف الأفلام المثيرة';
+                    fetchMovies('movie');
+                } else {
+                    sectionTitle.innerText = 'أشهر المسلسلات اليوم';
+                    heroTitle.innerText = 'أحدث المسلسلات';
+                    heroDesc.innerText = 'تابع أفضل المسلسلات الحصرية';
+                    fetchMovies('tv');
+                }
+            });
+        });
+        
+        // البحث
+        document.getElementById('searchBtn').addEventListener('click', search);
+        document.getElementById('searchInput').addEventListener('keypress', (e) => {
+            if(e.key === 'Enter') search();
+        });
+        
+        function search() {
+            const query = document.getElementById('searchInput').value.trim();
+            if(query === '') {
+                fetchMovies(currentCategory);
+                return;
+            }
+            
+            let url = '';
+            if(currentCategory === 'movie') {
+                url = `https://api.themoviedb.org/3/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}&language=ar`;
+            } else {
+                url = `https://api.themoviedb.org/3/search/tv?api_key=${API_KEY}&query=${encodeURIComponent(query)}&language=ar`;
+            }
+            
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    displayMovies(data.results);
+                    sectionTitle.innerText = `نتائج البحث عن: ${query}`;
+                })
+                .catch(error => {
+                    console.error('خطأ:', error);
+                    moviesContainer.innerHTML = '<p style="text-align:center;">حدث خطأ، تأكد من مفتاح API</p>';
+                });
+        }
+        
+        function fetchMovies(type) {
+            let url = '';
+            if(type === 'movie') {
+                url = `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=ar&page=1`;
+            } else {
+                url = `https://api.themoviedb.org/3/tv/popular?api_key=${API_KEY}&language=ar&page=1`;
+            }
+            
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    displayMovies(data.results);
+                })
+                .catch(error => {
+                    console.error('خطأ:', error);
+                    moviesContainer.innerHTML = '<p style="text-align:center;">فشل التحميل. تأكد من اتصالك بالإنترنت ومفتاح API</p>';
+                });
+        }
+        
+        function displayMovies(items) {
+            if(!items || items.length === 0) {
+                moviesContainer.innerHTML = '<p style="text-align:center;">لا توجد نتائج</p>';
+                return;
+            }
+            
+            moviesContainer.innerHTML = '';
+            items.forEach(item => {
+                const posterPath = item.poster_path ? `https://image.tmdb.org/t/p/w500${item.poster_path}` : 'https://via.placeholder.com/300x450?text=No+Image';
+                const title = item.title || item.name;
+                const date = item.release_date || item.first_air_date || 'تاريخ غير معروف';
+                const year = date.split('-')[0];
+                const rating = item.vote_average ? item.vote_average.toFixed(1) : '0';
+                
+                const card = document.createElement('div');
+                card.className = 'movie-card';
+                card.innerHTML = `
+                    <img src="${posterPath}" alt="${title}">
+                    <div class="movie-info">
+                        <div class="movie-title">${title}</div>
+                        <div class="movie-date">${year}</div>
+                        <div class="rating"><i class="fas fa-star"></i> ${rating}</div>
+                    </div>
+                `;
+                card.addEventListener('click', () => {
+                    <!-- alert(`🎬 ${title}\n📅 السنة: ${year}\n⭐ التقييم: ${rating}`); -->
+                    // هنا ممكن تفتح صفحة تفاصيل كاملة
+                    open(`https://www.themoviedb.org/${currentCategory}/${item.id}`, '_blank');
+                });
+                moviesContainer.appendChild(card);
+            });
+        }
+        
+        // تحميل الأفلام عند بدء التشغيل
+        fetchMovies('movie');
+        
+        // زر الهيرو
+        document.getElementById('heroBtn').addEventListener('click', () => {
+            window.scrollTo({ top: document.querySelector('.container').offsetTop, behavior: 'smooth' });
+        });
+    </script>
+</body>
+</html>
